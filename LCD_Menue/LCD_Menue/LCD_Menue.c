@@ -15,7 +15,7 @@ int main(void)
 	cur_off();
 	blink_off();
 
-	sendString(5,0,"Hallo Werner");
+	sendString(5,1,"Hallo Greppi");
 	
     while(1)
     {
