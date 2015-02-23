@@ -11,21 +11,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   3 .comment      00000030  00000000  00000000  00000310  2**0
                   CONTENTS, READONLY
-  4 .debug_aranges 000000c0  00000000  00000000  00000340  2**0
+  4 .debug_aranges 000000c8  00000000  00000000  00000340  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000086e  00000000  00000000  00000400  2**0
+  5 .debug_info   00000883  00000000  00000000  00000408  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000001f5  00000000  00000000  00000c6e  2**0
+  6 .debug_abbrev 0000020b  00000000  00000000  00000c8b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000488  00000000  00000000  00000e63  2**0
+  7 .debug_line   0000048e  00000000  00000000  00000e96  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000194  00000000  00000000  000012ec  2**2
+  8 .debug_frame  000001a4  00000000  00000000  00001324  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000027a  00000000  00000000  00001480  2**0
+  9 .debug_str    00000288  00000000  00000000  000014c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000003d4  00000000  00000000  000016fa  2**0
+ 10 .debug_loc    000003d4  00000000  00000000  00001750  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000000b0  00000000  00000000  00001ace  2**0
+ 11 .debug_ranges 000000b8  00000000  00000000  00001b24  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -380,13 +380,14 @@ void sendString(byte XPosition, byte YPosition, char *Text){
 		lcd_data(*Text++);
 	}
 	
+}
  252:	df 91       	pop	r29
  254:	cf 91       	pop	r28
  256:	08 95       	ret
 
 00000258 <main>:
-#include <avr/io.h>
-#include "Display.h"
+/* Function Decleration */
+void draw_lcd();
 
 int main(void)
 {
@@ -396,6 +397,7 @@ int main(void)
  25a:	ab df       	rcall	.-170    	; 0x1b2 <cur_off>
 	blink_off();
  25c:	a3 df       	rcall	.-186    	; 0x1a4 <blink_off>
+	draw_lcd();
 
 	sendString(5,1,"Hallo Greppi");
  25e:	40 e0       	ldi	r20, 0x00	; 0
