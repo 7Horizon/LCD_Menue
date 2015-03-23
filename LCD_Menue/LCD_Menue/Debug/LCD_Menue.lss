@@ -11,6 +11,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   3 .comment      00000030  00000000  00000000  00000358  2**0
                   CONTENTS, READONLY
+<<<<<<< HEAD
   4 .debug_aranges 000000c8  00000000  00000000  00000388  2**0
                   CONTENTS, READONLY, DEBUGGING
   5 .debug_info   00000995  00000000  00000000  00000450  2**0
@@ -26,6 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
  10 .debug_loc    00000468  00000000  00000000  00001957  2**0
                   CONTENTS, READONLY, DEBUGGING
  11 .debug_ranges 000000b8  00000000  00000000  00001dbf  2**0
+=======
+  4 .debug_aranges 000000c8  00000000  00000000  00000340  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000883  00000000  00000000  00000408  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000020b  00000000  00000000  00000c8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000048e  00000000  00000000  00000e96  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001a4  00000000  00000000  00001324  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000288  00000000  00000000  000014c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000003d4  00000000  00000000  00001750  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000b8  00000000  00000000  00001b24  2**0
+>>>>>>> origin/master
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -384,6 +402,7 @@ void sendString(byte YPosition, byte XPosition, char *Text){
 	}
 	
 }
+<<<<<<< HEAD
  258:	df 91       	pop	r29
  25a:	cf 91       	pop	r28
  25c:	08 95       	ret
@@ -436,6 +455,15 @@ void drawDisplay(struct status *Displaystatus)
 #include "Definitions.h"
 
 void drawDisplay(struct status *Displaystatus);
+=======
+ 252:	df 91       	pop	r29
+ 254:	cf 91       	pop	r28
+ 256:	08 95       	ret
+
+00000258 <main>:
+/* Function Decleration */
+void draw_lcd();
+>>>>>>> origin/master
 
 int main(void)
 {
@@ -450,7 +478,12 @@ int main(void)
 	cur_off();
  2a6:	85 df       	rcall	.-246    	; 0x1b2 <cur_off>
 	blink_off();
+<<<<<<< HEAD
  2a8:	7d df       	rcall	.-262    	; 0x1a4 <blink_off>
+=======
+ 25c:	a3 df       	rcall	.-186    	; 0x1a4 <blink_off>
+	draw_lcd();
+>>>>>>> origin/master
 
 	struct status Displaystatus;
 	Displaystatus.level = 0;

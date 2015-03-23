@@ -12,11 +12,17 @@
 
 void drawDisplay(struct status *Displaystatus);
 
+/* Function Decleration */
+void draw_lcd();
+void change_level();
+void get_function();
+
 int main(void)
 {
 	lcd_init();
 	cur_off();
 	blink_off();
+	draw_lcd();
 
 	struct status Displaystatus;
 	Displaystatus.level = 0;
@@ -31,6 +37,7 @@ int main(void)
     }
 }
 
+<<<<<<< HEAD
 void drawDisplay(struct status *Displaystatus)
 {
 	switch(Displaystatus->level){
@@ -50,3 +57,26 @@ void checkInput()
 {
 	
 }
+=======
+void get_taster()
+{
+	//Read port
+	//Wait for bouncing off
+}
+
+void get_function()
+{
+	
+	
+}
+
+void change_level()
+{
+	
+}
+
+void draw_lcd()
+{
+	
+}
+>>>>>>> origin/master
