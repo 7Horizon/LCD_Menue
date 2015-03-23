@@ -3,29 +3,29 @@ LCD_Menue.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         0000000e  00800200  0000026e  00000302  2**0
+  0 .data         00000006  00800200  000002be  00000352  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000026e  00000000  00000000  00000094  2**1
+  1 .text         000002be  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000001  0080020e  0080020e  00000310  2**0
+  2 .bss          00000001  00800206  00800206  00000358  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000310  2**0
+  3 .comment      00000030  00000000  00000000  00000358  2**0
                   CONTENTS, READONLY
-  4 .debug_aranges 000000c0  00000000  00000000  00000340  2**0
+  4 .debug_aranges 000000c8  00000000  00000000  00000388  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000086e  00000000  00000000  00000400  2**0
+  5 .debug_info   00000995  00000000  00000000  00000450  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000001f5  00000000  00000000  00000c6e  2**0
+  6 .debug_abbrev 00000231  00000000  00000000  00000de5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000488  00000000  00000000  00000e63  2**0
+  7 .debug_line   000004eb  00000000  00000000  00001016  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000194  00000000  00000000  000012ec  2**2
+  8 .debug_frame  000001b4  00000000  00000000  00001504  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000027a  00000000  00000000  00001480  2**0
+  9 .debug_str    0000029f  00000000  00000000  000016b8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000003d4  00000000  00000000  000016fa  2**0
+ 10 .debug_loc    00000468  00000000  00000000  00001957  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000000b0  00000000  00000000  00001ace  2**0
+ 11 .debug_ranges 000000b8  00000000  00000000  00001dbf  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -160,20 +160,20 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	ee e6       	ldi	r30, 0x6E	; 110
+  fa:	ee eb       	ldi	r30, 0xBE	; 190
   fc:	f2 e0       	ldi	r31, 0x02	; 2
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
  102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
  104:	07 90       	elpm	r0, Z+
  106:	0d 92       	st	X+, r0
- 108:	ae 30       	cpi	r26, 0x0E	; 14
+ 108:	a6 30       	cpi	r26, 0x06	; 6
  10a:	b1 07       	cpc	r27, r17
  10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
 
 0000010e <__do_clear_bss>:
  10e:	22 e0       	ldi	r18, 0x02	; 2
- 110:	ae e0       	ldi	r26, 0x0E	; 14
+ 110:	a6 e0       	ldi	r26, 0x06	; 6
  112:	b2 e0       	ldi	r27, 0x02	; 2
  114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
 
@@ -181,11 +181,11 @@ Disassembly of section .text:
  116:	1d 92       	st	X+, r1
 
 00000118 <.do_clear_bss_start>:
- 118:	af 30       	cpi	r26, 0x0F	; 15
+ 118:	a7 30       	cpi	r26, 0x07	; 7
  11a:	b2 07       	cpc	r27, r18
  11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
- 11e:	9c d0       	rcall	.+312    	; 0x258 <main>
- 120:	a4 c0       	rjmp	.+328    	; 0x26a <_exit>
+ 11e:	bc d0       	rcall	.+376    	; 0x298 <main>
+ 120:	cc c0       	rjmp	.+408    	; 0x2ba <_exit>
 
 00000122 <__bad_interrupt>:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
@@ -267,21 +267,21 @@ void cur_home() {
  19a:	08 95       	ret
 
 0000019c <lcd_main>:
- 19c:	80 91 0e 02 	lds	r24, 0x020E
+ 19c:	80 91 06 02 	lds	r24, 0x0206
  1a0:	d3 cf       	rjmp	.-90     	; 0x148 <lcd_command>
  1a2:	08 95       	ret
 
 000001a4 <blink_off>:
- 1a4:	80 91 0e 02 	lds	r24, 0x020E
+ 1a4:	80 91 06 02 	lds	r24, 0x0206
  1a8:	8d 7f       	andi	r24, 0xFD	; 253
- 1aa:	80 93 0e 02 	sts	0x020E, r24
+ 1aa:	80 93 06 02 	sts	0x0206, r24
  1ae:	f6 cf       	rjmp	.-20     	; 0x19c <lcd_main>
  1b0:	08 95       	ret
 
 000001b2 <cur_off>:
- 1b2:	80 91 0e 02 	lds	r24, 0x020E
+ 1b2:	80 91 06 02 	lds	r24, 0x0206
  1b6:	8c 7f       	andi	r24, 0xFC	; 252
- 1b8:	80 93 0e 02 	sts	0x020E, r24
+ 1b8:	80 93 06 02 	sts	0x0206, r24
  1bc:	ef cf       	rjmp	.-34     	; 0x19c <lcd_main>
  1be:	08 95       	ret
 
@@ -353,60 +353,126 @@ void cur_home() {
 0000023a <sendString>:
 	return;
 }
-void sendString(byte XPosition, byte YPosition, char *Text){
+void sendString(byte YPosition, byte XPosition, char *Text){
  23a:	cf 93       	push	r28
  23c:	df 93       	push	r29
- 23e:	ea 01       	movw	r28, r20
+ 23e:	98 2f       	mov	r25, r24
+ 240:	86 2f       	mov	r24, r22
+ 242:	ea 01       	movw	r28, r20
 	
 	lcd_setPos(XPosition, YPosition);
- 240:	a6 df       	rcall	.-180    	; 0x18e <lcd_setPos>
+ 244:	69 2f       	mov	r22, r25
+ 246:	a3 df       	rcall	.-186    	; 0x18e <lcd_setPos>
 	
 	while(*Text != '\0'){
- 242:	88 81       	ld	r24, Y
- 244:	88 23       	and	r24, r24
- 246:	29 f0       	breq	.+10     	; 0x252 <sendString+0x18>
- 248:	21 96       	adiw	r28, 0x01	; 1
+ 248:	88 81       	ld	r24, Y
+ 24a:	88 23       	and	r24, r24
+ 24c:	29 f0       	breq	.+10     	; 0x258 <sendString+0x1e>
+ 24e:	21 96       	adiw	r28, 0x01	; 1
 		lcd_data(*Text++);
- 24a:	90 df       	rcall	.-224    	; 0x16c <lcd_data>
+ 250:	8d df       	rcall	.-230    	; 0x16c <lcd_data>
 }
-void sendString(byte XPosition, byte YPosition, char *Text){
+void sendString(byte YPosition, byte XPosition, char *Text){
 	
 	lcd_setPos(XPosition, YPosition);
 	
 	while(*Text != '\0'){
- 24c:	89 91       	ld	r24, Y+
- 24e:	81 11       	cpse	r24, r1
- 250:	fc cf       	rjmp	.-8      	; 0x24a <sendString+0x10>
+ 252:	89 91       	ld	r24, Y+
+ 254:	81 11       	cpse	r24, r1
+ 256:	fc cf       	rjmp	.-8      	; 0x250 <sendString+0x16>
 		lcd_data(*Text++);
 	}
 	
- 252:	df 91       	pop	r29
- 254:	cf 91       	pop	r28
- 256:	08 95       	ret
+}
+ 258:	df 91       	pop	r29
+ 25a:	cf 91       	pop	r28
+ 25c:	08 95       	ret
 
-00000258 <main>:
-#include <avr/io.h>
-#include "Display.h"
+0000025e <drawDisplay>:
+    }
+}
+
+void drawDisplay(struct status *Displaystatus)
+{
+	switch(Displaystatus->level){
+ 25e:	fc 01       	movw	r30, r24
+ 260:	80 81       	ld	r24, Z
+ 262:	81 11       	cpse	r24, r1
+ 264:	18 c0       	rjmp	.+48     	; 0x296 <drawDisplay+0x38>
+		
+		case 0:
+			sendString(0, 2, ":");
+ 266:	40 e0       	ldi	r20, 0x00	; 0
+ 268:	52 e0       	ldi	r21, 0x02	; 2
+ 26a:	62 e0       	ldi	r22, 0x02	; 2
+ 26c:	e6 df       	rcall	.-52     	; 0x23a <sendString>
+			sendString(0, 5, ":");
+ 26e:	40 e0       	ldi	r20, 0x00	; 0
+ 270:	52 e0       	ldi	r21, 0x02	; 2
+ 272:	65 e0       	ldi	r22, 0x05	; 5
+ 274:	80 e0       	ldi	r24, 0x00	; 0
+ 276:	e1 df       	rcall	.-62     	; 0x23a <sendString>
+			sendString(1, 6, ".");
+ 278:	42 e0       	ldi	r20, 0x02	; 2
+ 27a:	52 e0       	ldi	r21, 0x02	; 2
+ 27c:	66 e0       	ldi	r22, 0x06	; 6
+ 27e:	81 e0       	ldi	r24, 0x01	; 1
+ 280:	dc df       	rcall	.-72     	; 0x23a <sendString>
+			sendString(1, 9, ".");
+ 282:	42 e0       	ldi	r20, 0x02	; 2
+ 284:	52 e0       	ldi	r21, 0x02	; 2
+ 286:	69 e0       	ldi	r22, 0x09	; 9
+ 288:	81 e0       	ldi	r24, 0x01	; 1
+ 28a:	d7 df       	rcall	.-82     	; 0x23a <sendString>
+			sendString(1, 14, "W");
+ 28c:	44 e0       	ldi	r20, 0x04	; 4
+ 28e:	52 e0       	ldi	r21, 0x02	; 2
+ 290:	6e e0       	ldi	r22, 0x0E	; 14
+ 292:	81 e0       	ldi	r24, 0x01	; 1
+ 294:	d2 cf       	rjmp	.-92     	; 0x23a <sendString>
+ 296:	08 95       	ret
+
+00000298 <main>:
+#include "Definitions.h"
+
+void drawDisplay(struct status *Displaystatus);
 
 int main(void)
 {
+ 298:	cf 93       	push	r28
+ 29a:	df 93       	push	r29
+ 29c:	00 d0       	rcall	.+0      	; 0x29e <main+0x6>
+ 29e:	1f 92       	push	r1
+ 2a0:	cd b7       	in	r28, 0x3d	; 61
+ 2a2:	de b7       	in	r29, 0x3e	; 62
 	lcd_init();
- 258:	b6 df       	rcall	.-148    	; 0x1c6 <lcd_init>
+ 2a4:	90 df       	rcall	.-224    	; 0x1c6 <lcd_init>
 	cur_off();
- 25a:	ab df       	rcall	.-170    	; 0x1b2 <cur_off>
+ 2a6:	85 df       	rcall	.-246    	; 0x1b2 <cur_off>
 	blink_off();
- 25c:	a3 df       	rcall	.-186    	; 0x1a4 <blink_off>
+ 2a8:	7d df       	rcall	.-262    	; 0x1a4 <blink_off>
 
-	sendString(5,1,"Hallo Greppi");
- 25e:	40 e0       	ldi	r20, 0x00	; 0
- 260:	52 e0       	ldi	r21, 0x02	; 2
- 262:	61 e0       	ldi	r22, 0x01	; 1
- 264:	85 e0       	ldi	r24, 0x05	; 5
- 266:	e9 df       	rcall	.-46     	; 0x23a <sendString>
- 268:	ff cf       	rjmp	.-2      	; 0x268 <main+0x10>
+	struct status Displaystatus;
+	Displaystatus.level = 0;
+ 2aa:	19 82       	std	Y+1, r1	; 0x01
+	Displaystatus.mode = 0;
+ 2ac:	1c 82       	std	Y+4, r1	; 0x04
+	Displaystatus.X = 0;
+ 2ae:	1b 82       	std	Y+3, r1	; 0x03
+	Displaystatus.Y = 0;
+ 2b0:	1a 82       	std	Y+2, r1	; 0x02
+	
+    while(1)
+    {
+        //TODO:: Please write your application code 	
+		drawDisplay(&Displaystatus);
+ 2b2:	ce 01       	movw	r24, r28
+ 2b4:	01 96       	adiw	r24, 0x01	; 1
+ 2b6:	d3 df       	rcall	.-90     	; 0x25e <drawDisplay>
+ 2b8:	fc cf       	rjmp	.-8      	; 0x2b2 <main+0x1a>
 
-0000026a <_exit>:
- 26a:	f8 94       	cli
+000002ba <_exit>:
+ 2ba:	f8 94       	cli
 
-0000026c <__stop_program>:
- 26c:	ff cf       	rjmp	.-2      	; 0x26c <__stop_program>
+000002bc <__stop_program>:
+ 2bc:	ff cf       	rjmp	.-2      	; 0x2bc <__stop_program>

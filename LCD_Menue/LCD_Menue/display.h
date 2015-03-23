@@ -241,7 +241,7 @@ void cur_home() {
 	lcd_command(0x02);
 	return;
 }
-void sendString(byte XPosition, byte YPosition, char *Text){
+void sendString(byte YPosition, byte XPosition, char *Text){
 	
 	lcd_setPos(XPosition, YPosition);
 	
