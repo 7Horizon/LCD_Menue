@@ -10,21 +10,24 @@
 #include "Display.h"
 #include "Definitions.h"
 
-void drawDisplay(struct status *Displaystatus);
+void drawDisplay();
+void switchInit();
+int countBits(byte Byte);
+void checkInput();
 
-/* Function Decleration */
-void draw_lcd();
-void change_level();
-void get_function();
+byte keyCounter;
+byte pressedSwitch;
+byte switchValue;
+struct status Displaystatus;
 
 int main(void)
 {
+	switchInit();
 	lcd_init();
 	cur_off();
 	blink_off();
-	draw_lcd();
 
-	struct status Displaystatus;
+	
 	Displaystatus.level = 0;
 	Displaystatus.mode = 0;
 	Displaystatus.X = 0;
@@ -32,15 +35,13 @@ int main(void)
 	
     while(1)
     {
-        //TODO:: Please write your application code 	
-		drawDisplay(&Displaystatus);
+        checkInput();
     }
 }
 
-<<<<<<< HEAD
-void drawDisplay(struct status *Displaystatus)
+void drawDisplay()
 {
-	switch(Displaystatus->level){
+	switch(Displaystatus.level){
 		
 		case 0:
 			sendString(0, 2, ":");
@@ -55,28 +56,42 @@ void drawDisplay(struct status *Displaystatus)
 
 void checkInput()
 {
+	switchValue = 0;
 	
-}
-=======
-void get_taster()
-{
-	//Read port
-	//Wait for bouncing off
+	if(countBits(SWITCH) == 1){
+				
+		if(keyCounter == 0){
+			pressedSwitch = SWITCH;
+		}
+		else{
+			if((keyCounter == 5) || ((keyCounter % 10 == 0)&&(keyCounter > 29))){
+				switchValue = pressedSwitch;
+			}
+		}
+					
+		keyCounter++;
+	}
+	else{
+		if(keyCounter > 5){
+			keyCounter = 0;
+		}
+	}	
 }
 
-void get_function()
+void switchInit()
 {
-	
-	
+	SWITCH_D = 0x00;	
 }
 
-void change_level()
+int countBits(byte Byte)
 {
+	int carryCount = 0;
 	
-}
-
-void draw_lcd()
-{
+	while(Byte > 0)
+	{
+		carryCount += Byte % 2;
+		Byte /= 2;
+	}
 	
+	return(carryCount);
 }
->>>>>>> origin/master

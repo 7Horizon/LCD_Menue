@@ -35,6 +35,10 @@
 #define	LCD	PORTA		// Output Port for LCD
 #define	LCD_D DDRA		// Data Direction Port for LCD
 
+#define SWITCH PORTB
+#define SWITCH_D DDRA
+
+
 //	+---+---+---+---+---+
 //	|PA0+PA2|PA4|PA6|VTG|
 //	+---+---+---+---+---+ PORTA

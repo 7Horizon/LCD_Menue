@@ -244,7 +244,7 @@ void cur_home() {
 void sendString(byte YPosition, byte XPosition, char *Text){
 	
 	lcd_setPos(XPosition, YPosition);
-	
+	 
 	while(*Text != '\0'){
 		lcd_data(*Text++);
 	}
